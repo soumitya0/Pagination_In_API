@@ -35,9 +35,11 @@ app.get("/users", (req, res) => {
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
-  const resultUsers = users.slice(startIndex, endIndex);
+  const results = {};
 
-  res.json(resultUsers);
+  results.userData = users.slice(startIndex, endIndex); // this will look like userData [ {}, {} , {} ,]
+
+  res.json(results);
 });
 
 app.listen(5550, () => {
