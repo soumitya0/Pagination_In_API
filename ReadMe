@@ -1,0 +1,23 @@
+Pagination In API
+
+step-1
+Noraml API  -> http://localhost:5550/users
+
+step-2
+
+now we will add Pagination  and limit of post 
+
+http://localhost:5550/users?page=1&limit=5  (so give the  First Page of  User and i only want 5 users from on that page )
+
+* get the page and limit  from URL
+            const page = req.query.page;
+            const limit = req.query.limit;
+
+* Have Start and endIndex
+            const startIndex = (page - 1) * limit;   // here it start form 0
+            const endIndex = page * limit;            
+
+* slice User 
+            const resultUsers = users.slice(startIndex, endIndex);
+
+
