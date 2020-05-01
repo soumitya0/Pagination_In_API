@@ -46,4 +46,13 @@ Step -3
 
      *** Handling the error of perviosPage
             if page: 1 and limit :5  then perviosPage object will not shows 
-            
+
+    *** Handling the error of perviosPage
+
+
+// if we have different Schema post then we have to copy and past code, this is not a approch
+
+    so for this we Create a middle ware
+
+    In Middleware execute befor the api inside elements  and then next() of Middleware will call inside elementsof api
+
