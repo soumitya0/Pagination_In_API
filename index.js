@@ -29,15 +29,25 @@ const users = [
 ];
 
 app.get("/users", (req, res) => {
-  const page = req.query.page;
-  const limit = req.query.limit;
+  const page = parseInt(req.query.page);
+  const limit = parseInt(req.query.limit);
 
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
   const results = {};
 
-  results.userData = users.slice(startIndex, endIndex); // this will look like userData [ {}, {} , {} ,]
+  results.nextPage = {
+    page: page + 1,
+    limit: limit,
+  };
+
+  results.previousPage = {
+    page: page - 1,
+    limit: limit,
+  };
+
+  results.userData = users.slice(startIndex, endIndex); // this will look like { userData [ {}, {} , {} ,] }
 
   res.json(results);
 });
