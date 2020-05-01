@@ -42,10 +42,12 @@ app.get("/users", (req, res) => {
     limit: limit,
   };
 
-  results.previousPage = {
-    page: page - 1,
-    limit: limit,
-  };
+  if (startIndex > 0) {
+    results.previousPage = {
+      page: page - 1,
+      limit: limit,
+    };
+  }
 
   results.userData = users.slice(startIndex, endIndex); // this will look like { userData [ {}, {} , {} ,] }
 
