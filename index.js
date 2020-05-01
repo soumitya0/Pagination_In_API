@@ -37,10 +37,12 @@ app.get("/users", (req, res) => {
 
   const results = {};
 
-  results.nextPage = {
-    page: page + 1,
-    limit: limit,
-  };
+  if (endIndex < users.length) {
+    results.nextPage = {
+      page: page + 1,
+      limit: limit,
+    };
+  }
 
   if (startIndex > 0) {
     results.previousPage = {
